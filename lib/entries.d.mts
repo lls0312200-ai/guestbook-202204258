@@ -11,7 +11,7 @@ export type EditResult =
 
 export type DeleteResult = { ok: true } | { ok: false; error: string };
 
-export const GENERIC_AUTH_ERROR: string;
+export const GENERIC_VERIFICATION_ERROR: string;
 
 export class ValidationError extends Error {}
 

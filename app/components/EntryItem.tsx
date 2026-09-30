@@ -1,8 +1,10 @@
 "use client";
 
 import { useActionState, useState } from "react";
-import { deleteEntryAction, editEntryAction, initialActionState } from "../actions";
+import { deleteEntryAction, editEntryAction, type ActionState } from "../actions";
 import { LIMITS } from "../../lib/validation.mjs";
+
+const initialActionState: ActionState = { status: "idle" };
 
 export type EntryView = {
   id: string;
@@ -41,6 +43,7 @@ export function EntryItem({ entry }: { entry: EntryView }) {
           <input type="hidden" name="id" value={entry.id} />
           <textarea
             name="message"
+            aria-label="수정할 메시지"
             defaultValue={entry.message}
             required
             rows={3}
@@ -49,6 +52,7 @@ export function EntryItem({ entry }: { entry: EntryView }) {
           />
           <input
             name="password"
+            aria-label="수정 비밀번호"
             type="password"
             placeholder="비밀번호"
             required
@@ -93,6 +97,7 @@ export function EntryItem({ entry }: { entry: EntryView }) {
           <input type="hidden" name="id" value={entry.id} />
           <input
             name="password"
+            aria-label="삭제 비밀번호"
             type="password"
             placeholder="비밀번호"
             required

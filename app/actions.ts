@@ -8,8 +8,6 @@ export type ActionState = {
   message?: string;
 };
 
-export const initialActionState: ActionState = { status: "idle" };
-
 export async function createEntryAction(
   _prevState: ActionState,
   formData: FormData

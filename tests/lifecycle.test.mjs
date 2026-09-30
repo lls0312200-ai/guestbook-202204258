@@ -1,6 +1,6 @@
 import test from "node:test";
 import assert from "node:assert/strict";
-import { createEntry, listEntries, editEntry, deleteEntry, GENERIC_AUTH_ERROR } from "../lib/entries.mjs";
+import { createEntry, listEntries, editEntry, deleteEntry, GENERIC_VERIFICATION_ERROR } from "../lib/entries.mjs";
 
 // Single end-to-end seam for the whole feature (spec.md "Testing Decisions"):
 // drives the entries module through create -> list -> wrong/right password edit
@@ -22,7 +22,7 @@ test("guestbook entry lifecycle: create, list, wrong/right password edit and del
 
     const wrongEdit = await editEntry({ id: created.id, password: wrongPassword, message: "해킹 시도" });
     assert.equal(wrongEdit.ok, false);
-    assert.equal(wrongEdit.error, GENERIC_AUTH_ERROR);
+    assert.equal(wrongEdit.error, GENERIC_VERIFICATION_ERROR);
 
     const afterWrongEdit = await listEntries();
     assert.equal(
@@ -42,7 +42,7 @@ test("guestbook entry lifecycle: create, list, wrong/right password edit and del
 
     const wrongDelete = await deleteEntry({ id: created.id, password: wrongPassword });
     assert.equal(wrongDelete.ok, false);
-    assert.equal(wrongDelete.error, GENERIC_AUTH_ERROR);
+    assert.equal(wrongDelete.error, GENERIC_VERIFICATION_ERROR);
 
     const afterWrongDelete = await listEntries();
     assert.ok(

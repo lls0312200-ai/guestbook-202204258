@@ -1,8 +1,10 @@
 "use client";
 
 import { useActionState } from "react";
-import { createEntryAction, initialActionState } from "../actions";
+import { createEntryAction, type ActionState } from "../actions";
 import { LIMITS } from "../../lib/validation.mjs";
+
+const initialActionState: ActionState = { status: "idle" };
 
 export function CreateEntryForm() {
   const [state, formAction, pending] = useActionState(createEntryAction, initialActionState);
