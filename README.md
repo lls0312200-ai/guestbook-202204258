@@ -2,6 +2,13 @@
 
 개발자: 이이삭 (학번 202204258). 로그인 없이 이름·메시지·비밀번호로 글을 남기고, 같은 비밀번호로만 수정(메시지만)·삭제할 수 있는 단일 페이지 방명록입니다.
 
+## 제출 주소
+
+- GitHub Repository (public): https://github.com/lls0312200-ai/guestbook-202204258
+- Vercel 배포: https://guestbook-202204258.vercel.app
+
+2026-09-30에 배포 주소에서 작성, 새로고침 후 조회, 틀린/정상 비밀번호로 수정·삭제를 확인했습니다. 검증용 글은 삭제했습니다.
+
 배경 문서: `docs/exam-brief.md`(요구사항), `GLOSSARY.md`(용어), `docs/adr/`(결정 근거), `.scratch/guestbook/spec.md`와 `.scratch/guestbook/issues/`(구현 스펙·티켓).
 
 ## 스택

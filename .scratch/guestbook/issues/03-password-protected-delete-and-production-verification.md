@@ -11,11 +11,11 @@
 - [x] A wrong password (or an already-deleted row) produces the same generic "wrong password" rejection used by edit; the entry remains listed.
 - [x] A correct password removes the entry; it no longer appears in the list.
 - [x] The single end-to-end test is extended one final time to cover: deleting with a wrong password (rejected, entry still listed) and deleting with the correct password (entry gone).
-- [ ] `DATABASE_URL` is set as an environment variable on the linked Vercel project (never committed to git, never echoed in any server response).
-- [ ] The app is deployed with `vercel deploy --prod` (or equivalent) using the authenticated Vercel CLI against the project already linked in `.vercel/project.json`, producing a live URL.
-- [ ] Manual verification against that live URL: create an entry, see it listed, edit it (wrong password rejected, then correct password accepted), delete it (wrong password rejected, then correct password accepted) — all behave as specified.
-- [ ] The GitHub repository is confirmed public and named `guestbook-202204258` (matching the already-configured `origin` remote).
+- [x] `DATABASE_URL` is set as a Production Secret on the linked Vercel project (never committed to git, never echoed in any server response).
+- [x] The app is deployed with `vercel deploy --prod --yes --scope leeeeee1` to https://guestbook-202204258.vercel.app.
+- [x] Manual verification against that live URL: create an entry, see it listed after refresh, edit it (wrong password rejected, then correct password accepted), delete it (wrong password rejected, then correct password accepted). The test entry was removed.
+- [x] The GitHub repository is confirmed public and named `guestbook-202204258` (matching `origin`).
 
 ## Comments
 
-- All code-level criteria above are implemented and pass locally (lint, typecheck, build, `db:check`, `test:lifecycle`). The last four checkboxes (Vercel env var, CLI deploy, live-URL manual verification, public-repo confirmation) are intentionally left unchecked: implementation stopped here per instruction, pending `/code-review` and the user's own external production verification and GitHub push/Vercel deploy.
+- Local lint, typecheck, build, `db:check`, and `test:lifecycle` passed. A browser test caught and fixed an invalid non-function export from a `"use server"` file; local and live UI CRUD then passed. The final code review's one naming finding was fixed. GitHub push and production deployment completed on 2026-09-30 KST.
