@@ -10,55 +10,51 @@ export function CreateEntryForm() {
   const [state, formAction, pending] = useActionState(createEntryAction, initialActionState);
 
   return (
-    <form action={formAction} className="flex flex-col gap-3 rounded-lg border border-slate-300 bg-white p-4">
-      <h2 className="text-lg font-semibold text-slate-800">글 남기기</h2>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="authorName" className="text-sm text-slate-600">
-          이름
-        </label>
+    <form action={formAction} className="guestbook-form">
+      <p className="eyebrow">LEAVE A LITTLE NOTE</p>
+      <h2>오늘의 한마디</h2>
+      <p className="form-intro">편안한 마음으로, 당신의 이야기를 들려주세요.</p>
+      <div className="field">
+        <label htmlFor="authorName">이름 <span>NAME</span></label>
         <input
           id="authorName"
           name="authorName"
           required
           maxLength={LIMITS.authorName.max}
-          className="rounded border border-slate-300 px-3 py-2"
+          placeholder="어떻게 불러드릴까요?"
         />
       </div>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="message" className="text-sm text-slate-600">
-          메시지
-        </label>
+      <div className="field">
+        <label htmlFor="message">메시지 <span>MESSAGE</span></label>
         <textarea
           id="message"
           name="message"
           required
           rows={3}
           maxLength={LIMITS.message.max}
-          className="rounded border border-slate-300 px-3 py-2"
+          placeholder="오늘은 어떤 하루였나요?"
         />
       </div>
-      <div className="flex flex-col gap-1">
-        <label htmlFor="password" className="text-sm text-slate-600">
-          비밀번호 (수정·삭제 시 필요합니다)
-        </label>
+      <div className="field">
+        <label htmlFor="password">비밀번호 <span>수정·삭제할 때 필요해요</span></label>
         <input
           id="password"
           name="password"
           type="password"
           required
           maxLength={LIMITS.password.max}
-          className="rounded border border-slate-300 px-3 py-2"
+          placeholder="나만 아는 비밀번호"
         />
       </div>
       <button
         type="submit"
         disabled={pending}
-        className="self-start rounded bg-slate-800 px-4 py-2 text-white disabled:opacity-50"
+        className="primary-button"
       >
-        {pending ? "등록 중..." : "등록"}
+        {pending ? "등록 중..." : "이야기 남기기 ↗"}
       </button>
       {state.status === "error" && (
-        <p role="alert" className="text-sm text-red-600">
+        <p role="alert" className="form-error">
           {state.message}
         </p>
       )}
