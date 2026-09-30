@@ -9,7 +9,9 @@
     "lint": "eslint .",
     "typecheck": "next typegen && tsc --noEmit",
     "check": "npm run lint && npm run typecheck && npm run build",
-    "db:check": "node --env-file-if-exists=.env.local scripts/check-db.mjs"
+    "db:check": "node --env-file-if-exists=.env.local scripts/check-db.mjs",
+    "db:setup": "node --env-file-if-exists=.env.local scripts/setup-db.mjs",
+    "test:lifecycle": "node --env-file-if-exists=.env.local --test tests/lifecycle.test.mjs"
   },
   "dependencies": {
     "@neondatabase/serverless": "^1.1.0",

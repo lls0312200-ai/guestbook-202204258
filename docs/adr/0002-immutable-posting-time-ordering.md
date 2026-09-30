@@ -1,0 +1,3 @@
+# Order entries by an immutable created_at; keep updated_at internal-only
+
+The brief requires that editing an entry's message never changes its position in the newest-first list. We set `created_at timestamptz` once at insert and use it as the permanent sort key; a separate `updated_at timestamptz` is bumped on edit for internal bookkeeping but is never rendered in the UI (the brief only calls for showing posting time). Both are stored in UTC and rendered to visitors in Asia/Seoul time. Splitting these two columns is deliberate: a reader who later "fixes" the list to sort by last-modified time, or surfaces `updated_at` as if it were the posting time, would silently break the ordering guarantee.
